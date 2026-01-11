@@ -1,5 +1,13 @@
 // app/dashboard/reports/page.tsx
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Reports",
+  description: "View reports and analytics in ContentHub dashboard.",
+};
+
+
 import StatCard from "@/components/StatCard";
 export default async function ReportsPage() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/dashboard/reports`, { cache: "no-store",});

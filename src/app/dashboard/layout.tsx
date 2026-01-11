@@ -4,6 +4,19 @@ import { redirect } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
 // import Topbar from "@/components/Topbar";
 import Topbar from "@/components/Topbar";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Dashboard Posts",
+    template: "ContentHub  Dashboard | %s",
+  },
+  description: "Admin dashboard for managing posts, messages, and analytics.",
+};
+
+
+
 export default async function DashboardLayout({ children,}: { children: React.ReactNode;}) {
     const session = await getServerSession(authOptions);
     if (!session) redirect("/login");

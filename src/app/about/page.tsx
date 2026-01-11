@@ -1,4 +1,10 @@
 import Navbar from "@/components/NavBar";
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "About",
+  description: "Learn more about ContentHub and its mission.",
+};
+
 export default async function AboutPage() {
 
   return (

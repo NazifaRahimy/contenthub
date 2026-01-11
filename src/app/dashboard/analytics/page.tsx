@@ -1,3 +1,12 @@
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Analytics",
+  description: "Monitor and analyze your data in ContentHub dashboard.",
+};
+
+
 import StatCard from "@/components/StatCard";
 export default async function AnalyticsPage() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/dashboard/stats`, {cache: "no-store",});
