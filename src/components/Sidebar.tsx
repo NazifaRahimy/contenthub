@@ -4,21 +4,30 @@ interface SidebarProps {
 }
 import Link from "next/link";
 import { useEffect, useState } from "react";
-// { role }: SidebarProps
 export default function Sidebar({ role }: SidebarProps) {
     const [unreadCount, setUnreadCount] = useState<number>(0);
-    useEffect(() => {
-        const fetchUnreadCount = async () => {
-            try {
-                const res = await fetch("/api/contact/unread-count", { cache: "no-store",});
-                const data = await res.json();
-                setUnreadCount(data.count);
-            } catch (error) {
-                console.error("Failed to fetch unread count", error);
-            }
-        };
-        fetchUnreadCount();
-    }, []);
+   
+  useEffect(() => {
+    const fetchUnreadCount = async () => {
+      const res = await fetch("/api/contact/unread-count", { cache: "no-store" });
+      const data = await res.json();
+      setUnreadCount(data.count);
+    };
+
+    // بار اول fetch کن
+    fetchUnreadCount();
+
+    // 👇 گوش دادن به event "message-read"
+    const handleMessageRead = () => {
+      fetchUnreadCount(); // دوباره count بگیر
+    };
+
+    window.addEventListener("message-read", handleMessageRead);
+
+    return () => {
+      window.removeEventListener("message-read", handleMessageRead);
+    };
+  }, []);
 
     return (
     <aside className="w-64 bg-white shadow-md">
