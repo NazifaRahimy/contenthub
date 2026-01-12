@@ -43,8 +43,8 @@ export default function PublicAllPostsPage() {
                 <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)} className="border p-2 rounded">
                     <option value="">All</option>
                     <option value="news">News</option>
-                    <option value="tech">Technology</option>
-                    <option value="life">Lifestyle</option>
+                    <option value="technology">Technology</option>
+                    <option value="lifestyle">Lifestyle</option>
                 </select>
             </div>
             <div dir="rtl" className="grid grid-cols-1  sm:grid-cols-2 gap-6">
